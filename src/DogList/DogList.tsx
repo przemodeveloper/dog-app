@@ -1,22 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DogCard from "../DogCard/DogCard";
 import DogItem from "../DogItem/DogItem";
 import { fetchDogs } from "../service";
+import { DogContext } from "../store/context";
 import { Breed } from "../types";
 
 const DogList = () => {
   const [dogs, setDogs] = useState<Breed[]>([]);
-  const [chosenBreed, setChosenBreed] = useState("");
-  const [isCardVisible, setIsCardVisible] = useState(false);
 
-  const getChosenBreed = (breed: string) => {
-    setChosenBreed(breed);
-    setIsCardVisible(true);
-  };
-
-  const closeModal = () => {
-    setIsCardVisible(false);
-  };
+  const ctx = useContext(DogContext);
 
   useEffect(() => {
     const fetch = async () => {
@@ -30,17 +22,9 @@ const DogList = () => {
     <>
       <div className="container">
         {dogs.map((dog, index) => {
-          return (
-            <DogItem
-              key={index}
-              breed={dog.breed}
-              onBreedChoose={getChosenBreed}
-            />
-          );
+          return <DogItem key={index} breed={dog.breed} />;
         })}
-        {isCardVisible && (
-          <DogCard breed={chosenBreed} onModalClose={closeModal} />
-        )}
+        {ctx.isCardVisible && <DogCard />}
       </div>
     </>
   );

@@ -1,36 +1,32 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 
 import Loader from "../Loader/Loader";
 import Modal from "../Modal/Modal";
 import { fetchDogImage } from "../service";
+import { DogContext } from "../store/context";
 
 import classes from "./DogCard.module.scss";
 
-const DogCard: FC<{ breed: string; onModalClose: () => void }> = ({
-  breed,
-  onModalClose,
-}) => {
+const DogCard: FC = () => {
   const [breedSRC, setBreedSRC] = useState("");
   const [isImageLoading, setIsImageLoading] = useState(true);
+
+  const ctx = useContext(DogContext);
 
   useEffect(() => {
     const fetch = async () => {
       setIsImageLoading(true);
-      setBreedSRC(await fetchDogImage(breed));
+      setBreedSRC(await fetchDogImage(ctx.chosenBreed));
       setIsImageLoading(false);
     };
 
     fetch();
-  }, [breed]);
+  }, [ctx.chosenBreed]);
 
   const changeRandomImage = async () => {
     setIsImageLoading(true);
-    setBreedSRC(await fetchDogImage(breed));
+    setBreedSRC(await fetchDogImage(ctx.chosenBreed));
     setIsImageLoading(false);
-  };
-
-  const closeModal = () => {
-    onModalClose();
   };
 
   return (
@@ -38,14 +34,18 @@ const DogCard: FC<{ breed: string; onModalClose: () => void }> = ({
       <div className={classes["card-container"]}>
         <div className={classes["img-container"]}>
           {!isImageLoading ? (
-            <img src={breedSRC} alt={breed} className={classes["img"]} />
+            <img
+              src={breedSRC}
+              alt={ctx.chosenBreed}
+              className={classes["img"]}
+            />
           ) : (
             <Loader />
           )}
         </div>
         <div className={classes["btns-container"]}>
           <button onClick={changeRandomImage}>Change image</button>
-          <button onClick={closeModal} className="ml-4">
+          <button onClick={() => ctx.closeModal()} className="ml-4">
             Close card
           </button>
         </div>

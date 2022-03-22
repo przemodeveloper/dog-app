@@ -1,12 +1,15 @@
 import classes from "./DogItem.module.scss";
-import { FC } from "react";
+import { FC, useContext } from "react";
+import { DogContext } from "../store/context";
 
 const DogItem: FC<{
   breed: String;
-  onBreedChoose: (breed: string) => void;
-}> = ({ breed, onBreedChoose }) => {
+}> = ({ breed }) => {
+  const ctx = useContext(DogContext);
+
   const setBreed = () => {
-    onBreedChoose(breed as string);
+    ctx.chooseBreed(breed as string);
+    ctx.openModal();
   };
 
   return (

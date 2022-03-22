@@ -1,9 +1,13 @@
 import classes from "./Modal.module.scss";
 import ReactDOM from "react-dom";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useContext } from "react";
+import { DogContext } from "../store/context";
 
 const Backdrop = () => {
-  return <div className={classes.backdrop}></div>;
+  const ctx = useContext(DogContext);
+  return (
+    <div className={classes.backdrop} onClick={() => ctx.closeModal()}></div>
+  );
 };
 
 const Overlay: FC<{ children: ReactNode }> = ({ children }) => {
