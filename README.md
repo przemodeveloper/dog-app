@@ -1,4 +1,4 @@
-# Dog app created with React(TypeScript)
+# Dog app created with React (TypeScript)
 
 ## The purpose of app
 
