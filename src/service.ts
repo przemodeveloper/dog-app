@@ -1,8 +1,5 @@
 import axios from "axios";
-
-export interface Breed {
-    breed: string
-}
+import { Breed } from "./types";
 
 export const fetchDogs = async () => {
     try {

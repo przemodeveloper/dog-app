@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import DogCard from "../DogCard/DogCard";
 import DogItem from "../DogItem/DogItem";
-import { Breed, fetchDogs } from "../service";
+import { fetchDogs } from "../service";
+import { Breed } from "../types";
 
 const DogList = () => {
   const [dogs, setDogs] = useState<Breed[]>([]);
@@ -26,7 +27,7 @@ const DogList = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <div className="container">
         {dogs.map((dog, index) => {
           return (
@@ -41,7 +42,7 @@ const DogList = () => {
           <DogCard breed={chosenBreed} onModalClose={closeModal} />
         )}
       </div>
-    </div>
+    </>
   );
 };
 
