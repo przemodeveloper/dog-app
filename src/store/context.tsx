@@ -1,5 +1,5 @@
 import React, { FC, ReactNode, useState } from "react";
-import { DogContextObject } from "../types";
+import { DogContextObject } from "../models/dogs";
 
 export const DogContext = React.createContext<DogContextObject>({
   isCardVisible: false,

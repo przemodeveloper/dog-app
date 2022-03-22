@@ -3,7 +3,7 @@ import DogCard from "../DogCard/DogCard";
 import DogItem from "../DogItem/DogItem";
 import { fetchDogs } from "../service";
 import { DogContext } from "../store/context";
-import { Breed } from "../types";
+import { Breed } from "../models/dogs";
 
 const DogList = () => {
   const [dogs, setDogs] = useState<Breed[]>([]);
@@ -20,12 +20,12 @@ const DogList = () => {
 
   return (
     <>
-      <div className="container">
+      <ul className="container">
         {dogs.map((dog, index) => {
           return <DogItem key={index} breed={dog.breed} />;
         })}
-        {ctx.isCardVisible && <DogCard />}
-      </div>
+      </ul>
+      {ctx.isCardVisible && <DogCard />}
     </>
   );
 };

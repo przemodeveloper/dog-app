@@ -13,12 +13,12 @@ const DogItem: FC<{
   };
 
   return (
-    <div className={classes.dog}>
+    <li className={classes.dog}>
       <p>{breed}</p>
       <div>
         <button onClick={setBreed}>Show image</button>
       </div>
-    </div>
+    </li>
   );
 };
 

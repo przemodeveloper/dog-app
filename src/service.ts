@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Breed } from "./types";
+import { Breed } from "./models/dogs";
 
 export const fetchDogs = async () => {
     try {
