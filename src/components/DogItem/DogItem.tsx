@@ -1,6 +1,6 @@
 import classes from "./DogItem.module.scss";
 import { FC, useContext } from "react";
-import { DogContext } from "../store/context";
+import { DogContext } from "../../store/context";
 
 const DogItem: FC<{
   breed: String;

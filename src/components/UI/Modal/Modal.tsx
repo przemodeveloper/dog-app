@@ -1,7 +1,7 @@
 import classes from "./Modal.module.scss";
 import ReactDOM from "react-dom";
 import { FC, ReactNode, useContext } from "react";
-import { DogContext } from "../store/context";
+import { DogContext } from "../../../store/context";
 
 const Backdrop = () => {
   const ctx = useContext(DogContext);

@@ -1,4 +1,4 @@
-import DogList from "./DogList/DogList";
+import DogList from "./components/DogList/DogList";
 import DogContextProvider from "./store/context";
 
 const App = () => {

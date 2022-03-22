@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
+import { Breed } from "../../models/dogs";
+import { fetchDogs } from "../../service";
+import { DogContext } from "../../store/context";
 import DogCard from "../DogCard/DogCard";
 import DogItem from "../DogItem/DogItem";
-import { fetchDogs } from "../service";
-import { DogContext } from "../store/context";
-import { Breed } from "../models/dogs";
 
 const DogList = () => {
   const [dogs, setDogs] = useState<Breed[]>([]);

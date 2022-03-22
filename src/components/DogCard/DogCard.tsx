@@ -1,9 +1,9 @@
 import { FC, useContext, useEffect, useState } from "react";
 
-import Loader from "../Loader/Loader";
-import Modal from "../Modal/Modal";
-import { fetchDogImage } from "../service";
-import { DogContext } from "../store/context";
+import { fetchDogImage } from "../../service";
+import { DogContext } from "../../store/context";
+import Loader from "../UI/Loader/Loader";
+import Modal from "../UI/Modal/Modal";
 
 import classes from "./DogCard.module.scss";
 
