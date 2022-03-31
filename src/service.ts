@@ -7,7 +7,7 @@ export const fetchDogs = async () => {
         const dogsArray: Breed[] = []
     
         for(const dog in data.message) {
-            dogsArray.push({ breed: dog })
+            dogsArray.push({ breed: dog, id: dogsArray.length + 1 })
         }
     
         return dogsArray;

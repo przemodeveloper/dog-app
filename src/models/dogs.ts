@@ -1,5 +1,6 @@
 export interface Breed {
     breed: string
+    id: number
 }
 
 export interface DogContextObject {

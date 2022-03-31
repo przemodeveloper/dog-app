@@ -21,8 +21,8 @@ const DogList = () => {
   return (
     <>
       <ul className="container">
-        {dogs.map((dog, index) => {
-          return <DogItem key={index} breed={dog.breed} />;
+        {dogs.map((dog) => {
+          return <DogItem key={dog.id} breed={dog.breed} />;
         })}
       </ul>
       {ctx.isCardVisible && <DogCard />}
