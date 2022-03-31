@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useCallback, useContext, useEffect, useState } from "react";
 
 import { fetchDogImage } from "../../service";
 import { DogContext } from "../../store/context";
@@ -13,21 +13,15 @@ const DogCard: FC = () => {
 
   const ctx = useContext(DogContext);
 
-  useEffect(() => {
-    const fetch = async () => {
-      setIsImageLoading(true);
-      setBreedSRC(await fetchDogImage(ctx.chosenBreed));
-      setIsImageLoading(false);
-    };
-
-    fetch();
-  }, [ctx.chosenBreed]);
-
-  const changeRandomImage = async () => {
+  const changeRandomImage = useCallback(async () => {
     setIsImageLoading(true);
     setBreedSRC(await fetchDogImage(ctx.chosenBreed));
     setIsImageLoading(false);
-  };
+  }, [ctx.chosenBreed]);
+
+  useEffect(() => {
+    changeRandomImage();
+  }, [changeRandomImage]);
 
   return (
     <Modal>
